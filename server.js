@@ -18,6 +18,10 @@ const db = mysql.createPool({
   queueLimit: 50
 });
 
+db.query('SELECT 1')
+  .then(() => console.log('DB connected'))
+  .catch(err => console.error('DB error:', err.message))
+
 app.get('/status', (req, res) => {
     return res.status(200).json({ status : 'OK'})
 })
